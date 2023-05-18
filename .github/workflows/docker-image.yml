@@ -20,3 +20,9 @@ jobs:
       
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag quay.io/rcook/myapp --platform="linux/arm64" --build-arg ARCH=arm64
+
+    - name: login to quay
+      run: docker login quay.io -u ${{ secrets.QUAY_USER }} -p ${{ secrets.QUAY_PASSWORD }}
+
+    - name: push to quay
+      run: docker push quay.io/rcook/myapp
