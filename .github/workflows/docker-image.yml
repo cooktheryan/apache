@@ -30,3 +30,9 @@ jobs:
 
     - name: push to quay
       run: docker push quay.io/rcook/myapp
+
+    - name: Invoke deployment hook Ohio
+      uses: distributhor/workflow-webhook@v3
+      env:
+        webhook_url: ${{ secrets.WEBHOOK_URL_OHIO }}
+        webhook_secret: ${{ secrets.WEBHOOK_SECRET_OHIO }}
